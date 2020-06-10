@@ -58,3 +58,6 @@ C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\API\bin\Debug\
 C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\API\bin\Debug\netcoreapp3.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\API\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\API\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\package-lock.json
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\MediatR.dll
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
