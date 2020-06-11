@@ -6,20 +6,29 @@ import { ActivityDetails } from "../details/ActivityDetails";
 import { ActivityForm } from "../form/ActivityForm";
 
 //to pass down activities from the app component
-interface IProps{
-    activities: IActivity[]
+interface IProps {
+  activities: IActivity[];
+  selectActivity: (id: string) => void;
+  selectedActivity: IActivity  | null;
 }
 
-export const ActivityDashboard : React.FC<IProps> = ({activities}) => {
+export const ActivityDashboard: React.FC<IProps> = ({
+  activities,
+  selectActivity,
+  selectedActivity,
+}) => {
   return (
     <Fragment>
       <Grid>
         <Grid.Column width={10}>
-            <ActivityList activities={activities}/>
+          <ActivityList
+            activities={activities}
+            selectActivity={selectActivity}
+          />
         </Grid.Column>
         <Grid.Column width={6}>
-            <ActivityDetails/>
-            <ActivityForm/>
+          {selectedActivity && <ActivityDetails activity={selectedActivity} />}         
+          <ActivityForm />
         </Grid.Column>
       </Grid>
     </Fragment>
