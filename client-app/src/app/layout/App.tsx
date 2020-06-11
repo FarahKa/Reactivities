@@ -36,6 +36,10 @@ const App = () => {
     setSelectedActivity(activity);
     setEditMode(false);
   }
+
+  const handleDeleteActivity = (id : string) => {
+    setActivities([...activities.filter(a=> a.id !== id)])
+  }
   
   useEffect(() => {
     //<> is return type
@@ -64,6 +68,7 @@ const App = () => {
         setEditMode={setEditMode}
         createActivity={handleCreateActivity}
         editActivity={handleEditActivity}
+        deleteActivity={handleDeleteActivity}
         />
       </Container>
 
