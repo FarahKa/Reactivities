@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ActivityList: React.FC = () => {
   const activityStore=useContext(ActivityStore);
-  const {activitiesByDate : activities , selectActivity, deleteActivity, submitting, target} = activityStore; 
+  const {activitiesByDate : activities , deleteActivity, submitting, target} = activityStore; 
   return (
     //clearing clears the floats
     <Segment clearing>

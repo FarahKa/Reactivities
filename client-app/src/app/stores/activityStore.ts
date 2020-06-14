@@ -7,10 +7,8 @@ configure({enforceActions:'always'});
 
 class ActivityStore {
   @observable activityRegistry = new Map();
-  @observable activities: IActivity[] = [];
   @observable loadingInitial = false;
   @observable activity: IActivity | null = null;
-  @observable editMode = false;
   @observable submitting = false;
   @observable target = '';
 
@@ -26,7 +24,6 @@ class ActivityStore {
       await agent.Activities.create(activity);
       runInAction('creating activity', () => {
         this.activityRegistry.set(activity.id, activity);
-        this.editMode = false;
         this.submitting = false;
       })
 
@@ -47,7 +44,6 @@ class ActivityStore {
       runInAction('editing activity', () => {
         this.activityRegistry.set(activity.id, activity);
         this.activity = activity;
-        this.editMode = false;
         this.submitting = false;
       })
 
@@ -61,25 +57,8 @@ class ActivityStore {
     }
   }
 
-  @action cancelSelectedActivity = () => {
-    console.log('yes??');
-    this.activity= null;
-  }
 
-  @action cancelFormOpen = () => {
-    console.log('yes?');
-    this.editMode=false;
-  }
 
-  @action openEditForm = (id:string) => {
-    this.activity = this.activityRegistry.get(id);
-    this.editMode=true;
-  }
-
-  @action openCreateForm = () => {
-    this.editMode= true;
-    this.activity = null;
-  }
 
   @action loadActivities = async () => {
     this.loadingInitial = true;
@@ -166,10 +145,7 @@ class ActivityStore {
 
   }
 
-  @action selectActivity = (id:string) => {
-      this.activity = this.activityRegistry.get(id);
-      this.editMode = false;
-  }
+
 }
 
 export default createContext(new ActivityStore());
