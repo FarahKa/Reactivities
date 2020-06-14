@@ -9,7 +9,7 @@ class ActivityStore {
   @observable activityRegistry = new Map();
   @observable activities: IActivity[] = [];
   @observable loadingInitial = false;
-  @observable selectedActivity: IActivity | undefined;
+  @observable activity: IActivity | undefined;
   @observable editMode = false;
   @observable submitting = false;
   @observable target = '';
@@ -46,7 +46,7 @@ class ActivityStore {
       await agent.Activities.update(activity);
       runInAction('editing activity', () => {
         this.activityRegistry.set(activity.id, activity);
-        this.selectedActivity = activity;
+        this.activity = activity;
         this.editMode = false;
         this.submitting = false;
       })
@@ -63,7 +63,7 @@ class ActivityStore {
 
   @action cancelSelectedActivity = () => {
     console.log('yes??');
-    this.selectedActivity=undefined;
+    this.activity=undefined;
   }
 
   @action cancelFormOpen = () => {
@@ -72,13 +72,13 @@ class ActivityStore {
   }
 
   @action openEditForm = (id:string) => {
-    this.selectedActivity = this.activityRegistry.get(id);
+    this.activity = this.activityRegistry.get(id);
     this.editMode=true;
   }
 
   @action openCreateForm = () => {
     this.editMode= true;
-    this.selectedActivity = undefined;
+    this.activity = undefined;
   }
 
   @action loadActivities = async () => {
@@ -100,7 +100,6 @@ class ActivityStore {
       })
 
     } 
-
     //promise chain
     // agent.Activities.list()
     //   .then((activities) => {
@@ -111,6 +110,33 @@ class ActivityStore {
     //   })
     //   .finally(() => this.loadingInitial = false);
   };
+
+  @action loadActivity = async (id: string) => {
+    let activity = this.getActivity(id);
+    if(activity) {
+      this.activity = activity;
+    } else {
+      this.loadingInitial = true;
+      try {
+          activity = await agent.Activities.details(id);
+          runInAction('getting activity', () => {
+            this.activity=activity;
+            this.loadingInitial = false;
+          })
+      } catch (error) {
+        runInAction('get Activity error', () => {
+          this.loadingInitial=false;
+        })
+        console.log(error);
+      }
+    }
+
+      
+  }
+//accomodating if a user saves an activity in their bookmark or refreshes the page
+  getActivity = (id : string) => {
+    return  this.activityRegistry.get(id);
+  }
 
   @action deleteActivity = async (event : SyntheticEvent<HTMLButtonElement>, id:string) => {
     this.submitting= true;
@@ -137,7 +163,7 @@ class ActivityStore {
   }
 
   @action selectActivity = (id:string) => {
-      this.selectedActivity = this.activityRegistry.get(id);
+      this.activity = this.activityRegistry.get(id);
       this.editMode = false;
   }
 }
