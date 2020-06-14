@@ -9,7 +9,7 @@ class ActivityStore {
   @observable activityRegistry = new Map();
   @observable activities: IActivity[] = [];
   @observable loadingInitial = false;
-  @observable activity: IActivity | undefined;
+  @observable activity: IActivity | null = null;
   @observable editMode = false;
   @observable submitting = false;
   @observable target = '';
@@ -63,7 +63,7 @@ class ActivityStore {
 
   @action cancelSelectedActivity = () => {
     console.log('yes??');
-    this.activity=undefined;
+    this.activity= null;
   }
 
   @action cancelFormOpen = () => {
@@ -78,7 +78,7 @@ class ActivityStore {
 
   @action openCreateForm = () => {
     this.editMode= true;
-    this.activity = undefined;
+    this.activity = null;
   }
 
   @action loadActivities = async () => {
@@ -132,6 +132,10 @@ class ActivityStore {
     }
 
       
+  }
+
+  @action clearActivity = () => {
+    this.activity = null;
   }
 //accomodating if a user saves an activity in their bookmark or refreshes the page
   getActivity = (id : string) => {
