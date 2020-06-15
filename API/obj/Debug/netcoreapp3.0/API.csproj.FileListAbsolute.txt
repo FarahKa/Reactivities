@@ -61,3 +61,7 @@ C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\API\bin\Debug\
 C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\package-lock.json
 C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\MediatR.dll
 C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\FluentValidation.dll
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\FluentValidation.AspNetCore.dll
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\bin\Debug\netcoreapp3.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\HP\Desktop\StageDotNet\udemy course\project\Reactivities\api\obj\Debug\netcoreapp3.0\API.MvcApplicationPartsAssemblyInfo.cs

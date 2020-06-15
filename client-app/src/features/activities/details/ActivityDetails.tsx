@@ -15,6 +15,7 @@ interface DetailParams {
 //detailparams is to tell the match.props that there is an id
 const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({
   match,
+  history,
 }) => {
   const activityStore = useContext(ActivityStore);
   const {
@@ -24,9 +25,14 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({
   } = activityStore;
   useEffect(() => {
     loadActivity(match.params.id);
-  }, [loadActivity, match.params.id]);
+  }, [loadActivity, match.params.id, history]);
 
   if (loadingInitial || !activity) return <LoadingComponent content = 'Loading Activity ...'></LoadingComponent>
+  
+  if (!activity){
+
+  }
+  
   return (
     <Grid>
       <Grid.Column width={10}>
